@@ -2,22 +2,11 @@ const express = require("express")
 const app = express()
 const port = process.env.PORT
 const {client} = require("./config/db_conn.js")
-
-app.get("/", async (req, res) =>{
-    try {
-        const db = client.db("stoicelm")
-        const collection = db.collection("admin")
-        const data = await collection.find({})
-        res.send(data)
-    } catch (error){
-        res.status(500).send("you received an error")
-    }
-    
-})
+const {router} = require("./routes.js")
 
 const server = app.listen(port, () =>{
     console.log(`app listening on port ${port}`)
-    console.log("changin")
+    console.log("change")
 });
 
 server.on('listening', async () =>{
@@ -46,8 +35,8 @@ process.on('SIGINT', () =>{
 if (process.env.NODE_ENV === "development"){
     process.once('SIGUSR2', async () =>{
        async function gracefulShutdown(callback){
-            await client.close('client closed')
-            console.log("client closed")
+            await client.close()
+            console.log("db closed")
             callback()
         }
         gracefulShutdown(function(){

@@ -11,6 +11,10 @@ const client = new MongoClient(uri,  {
     }
 );
 
+client.on("serverClosed", event =>{
+    console.log(`serverClosed`)
+})
+
 
 module.exports = {
     client
