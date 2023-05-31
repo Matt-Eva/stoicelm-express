@@ -22,7 +22,12 @@ const getContent = async(params) =>{
 }
 
 const getCreatorWriting = async (params) =>{
-    
+    try{
+        const writingCollection = client.db('stoicelm').collection('writing')
+        const writing = writingCollection.find({creator_name: params.creatorName}).toArray()
+    } catch(error){
+        throw new Error("could not complete that query")
+    }
 }
 
 module.exports = {

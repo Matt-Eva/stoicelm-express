@@ -24,5 +24,6 @@ const creatorWriting = async (req, res) =>{
 
 module.exports = {
     index,
-    show
+    show,
+    creatorWriting
 }

@@ -7,5 +7,7 @@ router.get("/writing", writingController.index)
 
 router.get("/content/:creatorName/:title", writingController.show)
 
+router.get("/writing/:creatorName", writingController.creatorWriting)
+
 
 module.exports =router
