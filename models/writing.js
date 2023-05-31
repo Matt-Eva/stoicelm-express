@@ -1,0 +1,5 @@
+class Writing {
+    constructor(data){
+        
+    }
+}

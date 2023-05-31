@@ -16,6 +16,4 @@ client.on("serverClosed", event =>{
 })
 
 
-module.exports = {
-    client
-}
+module.exports = client

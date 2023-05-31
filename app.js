@@ -1,8 +1,10 @@
 const express = require("express")
 const app = express()
 const port = process.env.PORT
-const {client} = require("./config/db_conn.js")
-const {router} = require("./routes.js")
+const client = require("./config/db_conn.js")
+const router = require("./routes.js")
+
+app.use("/", router)
 
 const server = app.listen(port, () =>{
     console.log(`app listening on port ${port}`)
