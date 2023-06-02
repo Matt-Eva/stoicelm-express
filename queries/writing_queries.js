@@ -2,8 +2,9 @@ const client = require('../config/db_conn.js')
 
 const getLatest = async () =>{
     try{
+        const skip = parseInt(params.skip)
         const writingCollection = client.db('stoicelm').collection('writing')
-        const writing = await writingCollection.find({}).limit(50).toArray()
+        const writing = await writingCollection.find({}).limit(50).skip(skip).toArray()
         return writing
     } catch(error){
         throw new Error("could not complete that query")
@@ -24,7 +25,8 @@ const getContent = async(params) =>{
 const getCreatorWriting = async (params) =>{
     try{
         const writingCollection = client.db('stoicelm').collection('writing')
-        const writing = writingCollection.find({creator_name: params.creatorName}).toArray()
+        const writing = await writingCollection.find({creator_name: params.creatorName}).toArray()
+        return writing
     } catch(error){
         throw new Error("could not complete that query")
     }
@@ -32,5 +34,6 @@ const getCreatorWriting = async (params) =>{
 
 module.exports = {
     getLatest,
-    getContent
+    getContent,
+    getCreatorWriting
 }
