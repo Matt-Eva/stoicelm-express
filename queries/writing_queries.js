@@ -13,9 +13,11 @@ const getLatest = async (params) =>{
 
 const getContent = async(params) =>{
     try{
-        const urlId = `/${params.creatorName}/${params.title}`
+        const urlId = `/${params.creator}/${params.title}`
+        console.log(urlId)
         const contentCollection = client.db('stoicelm').collection('content')
-        const content = await contentCollection.findOne({url_id: urlId})
+        const content = await contentCollection.findOne({title: params.title})
+        console.log(content)
         return content
     } catch(error){
         throw new Error("could not complete that query")

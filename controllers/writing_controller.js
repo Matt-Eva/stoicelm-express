@@ -11,6 +11,8 @@ const index = async (req, res) => {
 
 const show = async (req, res) => {
     try {
+        console.log(req.params)
+        
         const content = await writingQueries.getContent(req.params)
         res.status(200).send(content)
     } catch(error){

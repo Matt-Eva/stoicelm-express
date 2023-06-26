@@ -5,7 +5,7 @@ const writingController = require('./controllers/writing_controller.js')
 
 router.get("/writing/:skip", writingController.index)
 
-router.get("/content/:creatorName/:title", writingController.show)
+router.get("/content/:creator/:title", writingController.show)
 
 router.get("/:creatorName/writing", writingController.creatorWriting)
 
