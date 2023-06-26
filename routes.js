@@ -3,7 +3,7 @@ const router = express.Router()
 
 const writingController = require('./controllers/writing_controller.js')
 
-router.get("/writing/:offset", writingController.index)
+router.get("/writing/:skip", writingController.index)
 
 router.get("/content/:creatorName/:title", writingController.show)
 

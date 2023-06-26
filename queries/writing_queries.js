@@ -1,6 +1,6 @@
 const client = require('../config/db_conn.js')
 
-const getLatest = async () =>{
+const getLatest = async (params) =>{
     try{
         const skip = parseInt(params.skip)
         const writingCollection = client.db('stoicelm').collection('writing')
